@@ -18,7 +18,7 @@
             flex-direction: column;
             /* padding: 30px; */
         }
-
+    
         /* Search Input */
         #searchInput {
             width: 90%;
@@ -44,6 +44,7 @@
             width: 100%;
             max-width: 400px;
         }
+    
 
         /* Placeholder Style */
         .placeholder {
@@ -51,7 +52,7 @@
             font-weight: bold;
             opacity: 0.8;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
+            /* background: rgba(255, 255, 255, 0.2); */
             border-radius: 10px;
             transition: 0.3s ease-in-out;
             max-height: 30px;
@@ -79,15 +80,28 @@
             background: linear-gradient(to right, #6a11cb, #2575fc);
             color: #fff;
         }
+        .btn {
+            max-width: 350px;
+            padding: 10px;
+            margin: 8px auto;
+
+            font-size: 16px;
+            color: #fff;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
     </style>
 </head>
 <body>
 
-    <h2>🔍 Search User</h2>
+    <h2>🔍 Search Wakala</h2>
     <input type="text" id="searchInput" placeholder="Type a number/code">
     <button type="submit" id ="button" class="btn" onclick="searchData()">Search</button>
 
-    <div id="results" class="placeholder">Search User</div>
+    <div id="results" class="placeholder"></div>
 
     <script>
 
@@ -97,17 +111,17 @@ function searchData() {
             resultsDiv.innerHTML = "";
 
             if (query === "") {
-                resultsDiv.innerHTML = "<p class='placeholder'>Search User</p>";
+                resultsDiv.innerHTML = "<p class='placeholder'></p>";
                 return;
             }
 
             let filteredData = jsonData.filter(item => item.number.toString().toLowerCase().includes(query)  || item.code.toString().toLowerCase().includes(query) || item.name.toString().toLowerCase().includes(query));
 
             if (filteredData.length === 0) {
-                resultsDiv.innerHTML = "<p class='placeholder'>No results found</p>";
+                resultsDiv.innerHTML = "<p class='placeholder'>Wakala sio wetu </p>";
             } else {
                 filteredData.forEach(item => {
-                    resultsDiv.innerHTML += `
+                    resultsDiv.innerHTML = `
                         <div class="result-item">
                             ${item.name} - code: ${item.code}
                         </div>
